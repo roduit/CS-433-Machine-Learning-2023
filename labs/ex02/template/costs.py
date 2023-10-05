@@ -4,7 +4,7 @@
 import numpy as np
 
 
-def compute_loss(y, tx, w):
+def compute_loss(y, tx, w, MSE=True):
     """Calculate the loss using either MSE or MAE.
 
     Args:
@@ -18,5 +18,10 @@ def compute_loss(y, tx, w):
     # ***************************************************
     # INSERT YOUR CODE HERE
     # TODO: compute loss by MSE
+    e = y - tx @ w
+    if MSE:
+        loss = 1/(2*len(y)) *np.linalg.norm(e)**2
+    else:
+        loss = 1/(2*len(y)) * sum(abs(e))
+    return loss
     # ***************************************************
-    raise NotImplementedError
