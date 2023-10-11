@@ -1,12 +1,4 @@
-# -*- coding: utf-8 -*-
-"""Exercise 3.
-
-Least Square
-"""
-
-import numpy as np
-
-
+from costs import *
 def least_squares(y, tx):
     """Calculate the least squares solution.
        returns mse, and optimal weights.
@@ -23,8 +15,10 @@ def least_squares(y, tx):
     (array([ 0.21212121, -0.12121212]), 8.666684749742561e-33)
     """
     # ***************************************************
-    # COPY YOUR CODE FROM EX03 HERE
+    # INSERT YOUR CODE HERE
     # least squares: TODO
-    # returns optimal weights, MSE
+    # returns mse, and optimal weights
+    w = np.linalg.solve(tx.T@tx,tx.T@y)
+    loss = compute_mse(y,tx,w)
+    return w, loss
     # ***************************************************
-    raise NotImplementedError
